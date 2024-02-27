@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:responsive_app_livestream/controller/controller.dart';
+import 'package:responsive_app_livestream/util/responsive.dart';
 
 import '../../../constant/constants.dart';
 
@@ -12,11 +15,11 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // if (!Responsive.isDesktop(context))
-        //   IconButton(
-        //     icon: const Icon(Icons.menu,color: Colors.black),
-        //     onPressed: context.read<MenuAppController>().controlMenu,
-        //   ),
+        if (!Responsive.isDesktop(context))
+          IconButton(
+            icon: const Icon(Icons.menu, color: Colors.black),
+            onPressed: context.read<MenuAppController>().controlMenu,
+          ),
         // if (!Responsive.isMobile(context))
         Text(
           "Dashboard",
