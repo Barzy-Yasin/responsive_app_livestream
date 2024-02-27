@@ -25,7 +25,7 @@ class Header extends StatelessWidget {
           "Dashboard",
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        const Spacer(flex: 2),
+        const Spacer(flex: 1),
         const Expanded(child: SearchField()),
         const ProfileCard()
       ],
