@@ -20,11 +20,11 @@ class Header extends StatelessWidget {
             icon: const Icon(Icons.menu, color: Colors.black),
             onPressed: context.read<MenuAppController>().controlMenu,
           ),
-        // if (!Responsive.isMobile(context))
-        Text(
-          "Dashboard",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        if (!Responsive.isMobile(context))
+          Text(
+            "Dashboard",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         const Spacer(flex: 1),
         const Expanded(child: SearchField()),
         const ProfileCard()
@@ -58,10 +58,11 @@ class ProfileCard extends StatelessWidget {
             height: 38,
           ),
           // Hide it on Mobile
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            child: Text("Subreen Adam"),
-          ),
+          if (!Responsive.isMobile(context))
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              child: Text("Subreen Adam"),
+            ),
           const Icon(
             Icons.keyboard_arrow_down,
             color: Colors.black,

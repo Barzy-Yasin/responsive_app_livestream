@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_app_livestream/util/responsive.dart';
 
 import '../../constant/constants.dart';
 import 'components/header.dart';
@@ -11,14 +12,14 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: SingleChildScrollView(
         primary: false,
-        padding: EdgeInsets.all(defaultPadding),
+        padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            Header(),
-            SizedBox(height: defaultPadding),
+            const Header(),
+            const SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -26,18 +27,21 @@ class DashboardScreen extends StatelessWidget {
                   flex: 5,
                   child: Column(
                     children: [
-                      MyFiles(),
-                      SizedBox(height: defaultPadding),
-                      RecentFiles(),
+                      const MyFiles(),
+                      const SizedBox(height: defaultPadding),
+                      const RecentFiles(),
+                      const SizedBox(height: defaultPadding),
+                      if (Responsive.isMobile(context)) const StarageDetails(),
                     ],
                   ),
                 ),
-                SizedBox(width: defaultPadding),
+                const SizedBox(width: defaultPadding),
                 // On Mobile we don't want to show it
-                Expanded(
-                  flex: 2,
-                  child: StarageDetails(),
-                ),
+                if (!Responsive.isMobile(context))
+                  const Expanded(
+                    flex: 2,
+                    child: StarageDetails(),
+                  ),
               ],
             )
           ],
